@@ -10,15 +10,16 @@ void Motor::canRxMsgCallback(const uint8_t rx_data[8])
 {
     last_ecd_ = ecd_angle_;
 
-    uint16_t angle = (uint16_t)rx_data[0] << 8 | rx_data[1];
+    uint16_t angle = rx_data[0] << 8 | rx_data[1];
     ecd_angle_ = (float)angle * 360 / 8192;
 
-    speedRpm_ = (float)((int16_t)rx_data[2] << 8 | rx_data[3]);
+    int16_t speed = rx_data[2] << 8 | rx_data[3];
+    speedRpm_ = (float)(speed / ratio_);
 
-    uint16_t current = (int16_t)rx_data[4] << 8 | rx_data[5];
+    int16_t current = rx_data[4] << 8 | rx_data[5];
     currentA_ = (float)current * 20 / 16384;
 
-    tempC_ = (float)((uint16_t)rx_data[6] << 8 | rx_data[7]);
+    tempC_ = (rx_data[6] << 8 | rx_data[7]);
 
     float delta_angle = ecd_angle_ - last_ecd_;
     if (delta_angle <= -180)

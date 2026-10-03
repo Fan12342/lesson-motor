@@ -5,19 +5,21 @@
 #include "motor.h"
 
 Motor motor1(19.2f);
-uint16_t counter = 0;
+constexpr uint32_t kMotor1FeedbackId = 0x202;
 
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
-    counter++;
     uint8_t data[8];
     if (hcan != &hcan1) return ;
     if (HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, data) != HAL_OK) return ;
 
-    motor1.canRxMsgCallback(data);
+    if (rx_header.IDE == CAN_ID_STD && rx_header.RTR == CAN_RTR_DATA
+        && rx_header.DLC == 8 && rx_header.StdId == kMotor1FeedbackId)
+    {
+        motor1.canRxMsgCallback(data);
+    }
 
-
-    //motor1.setTxCurrent(1.0f, 2);
+    motor1.setTxCurrent(1.0f, 2);
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
