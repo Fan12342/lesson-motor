@@ -593,6 +593,16 @@
               <FileType>8</FileType>
               <FilePath>..\Core\Src\motor.cpp</FilePath>
             </File>
+            <File>
+              <FileName>pid.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\pid.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>rm_log.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\rm_log.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -24,7 +24,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdbool.h>
+
 #include "can_user.h"
+#include "rm_log.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -45,7 +48,8 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+bool stop_flag = false;
+uint8_t target_angle = 90;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -56,7 +60,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void motor1_setTxCurrent(float amperes);
 /* USER CODE END 0 */
 
 /**
@@ -103,8 +107,42 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  uint32_t lastTick = HAL_GetTick();
+  float amp = 0;
   while (1)
   {
+    uint32_t currentTick = HAL_GetTick();
+    if (currentTick - lastTick > 2000)
+    {
+      lastTick = currentTick;
+      /*
+      if (target_angle == 90)
+        target_angle = 100;
+      else
+        target_angle = 90;
+      */
+    }
+    //RM_LOG(target_angle);
+    /*
+    uint32_t currentTick = HAL_GetTick();
+    if (currentTick - lastTick > 20)
+    {
+      lastTick = currentTick;
+      amp += 0.1f;
+
+      if (amp <= 5.0f)
+        motor1_setTxCurrent(amp);
+      else if (amp <= 15.0f)
+        motor1_setTxCurrent(10.0f - amp);
+      else if (amp <= 20.0f)
+        motor1_setTxCurrent(amp - 20.0f);
+      else
+      {
+        motor1_setTxCurrent(0);
+        amp = 0.0f;
+      }
+    }
+    */
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

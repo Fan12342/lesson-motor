@@ -35,7 +35,9 @@ enable_language(C ASM)
 add_executable(${CMAKE_PROJECT_NAME}
         Core/Src/can_user.c
         Core/Src/callback.cpp
-        Core/Src/motor.cpp)
+        Core/Src/motor.cpp
+        Core/Src/pid.cpp
+        Core/Src/rm_log.c)
 
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
