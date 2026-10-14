@@ -108,19 +108,19 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   uint32_t lastTick = HAL_GetTick();
-  float amp = 0;
+  //float amp = 0;
   while (1)
   {
     uint32_t currentTick = HAL_GetTick();
     if (currentTick - lastTick > 2000)
     {
       lastTick = currentTick;
-      /*
+
       if (target_angle == 90)
         target_angle = 100;
       else
         target_angle = 90;
-      */
+
     }
     //RM_LOG(target_angle);
     /*

@@ -8,9 +8,9 @@
 extern bool stop_flag;
 extern uint16_t target_angle;
 
-PID_User ppid(10.0f, 0.1f, 30.0f, 0.0f, 100.0f, 0.5f);
-PID_User spid(1.0f, 0.0f, 1.0f, 0.0f, 10.0f, 0.1f);
-Motor motor1(1, 36.0f, 1, ppid, spid);
+PID_User ppid(13.0f, 0.1f, 15.0f, 0.0f, 100.0f, 0.95f);
+PID_User spid(0.7f, 0.0f, 0.0f, 0.0f, 10.0f, 0.03f);
+Motor motor1(1, 36.0f, 2, ppid, spid);
 
 constexpr uint32_t kMotor1FeedbackId = 0x201;
 
@@ -26,9 +26,6 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
         motor1.canRxMsgCallback(data);
 
         motor1.handle(target_angle);
-        RM_LOG(motor1.angle());
-        RM_LOG(ppid.calc_output);
-        RM_LOG(spid.calc_output);
     }
 }
 

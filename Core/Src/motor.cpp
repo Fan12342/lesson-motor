@@ -80,17 +80,19 @@ void Motor::handle(float arg)
     {
         case 1:
             {
-                float s_ref = ppid_.calc(arg, angle_) + (forward_k) * (float)sin((double)angle_ * 3.1415926f / 180.0f);
+                float s_ref = ppid_.calc(arg, angle_);
                 amperes = spid_.calc(s_ref, speedRpm_);
             }
         break;
 
         case 2:
             {
-                amperes = spid_.calc(arg, speedRpm_);
+                amperes = spid_.calc(0, speedRpm_);
+                //amperes = spid_.calc(arg, speedRpm_);
                 break;
             }
     }
+    amperes +=  + (forward_k) * (float)sin((double)angle_ * 3.1415926f / 180.0f);
     amperes_ = amperes;
     setTxCurrent(amperes);
 }

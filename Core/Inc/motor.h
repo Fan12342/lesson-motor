@@ -14,11 +14,11 @@ public:
     explicit Motor(uint8_t motor_id, float ratio, uint8_t control_mode, PID_User ppid, PID_User spid);
 
     void canRxMsgCallback(const uint8_t rx_data[8]);
-    float amperes_;
+    float amperes_ = 0;
 
     float angle() const;
     float speedRpm() const;
-    float forward_k = 1.15;
+    float forward_k = 0.4;
     //bool hasFeedback() const;
 
     void setTxCurrent(float amperes);
