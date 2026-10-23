@@ -18,7 +18,7 @@ public:
 
     float angle() const;
     float speedRpm() const;
-    float forward_k = 0.4;
+    float forward_k = 0.43;
     //bool hasFeedback() const;
 
     void setTxCurrent(float amperes);

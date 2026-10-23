@@ -64,8 +64,6 @@ void Motor::setTxCurrent(float amperes)
     {
         // 改0x1ff
     }
-
-    RM_LOG(amperes);
 }
 
 uint8_t* Motor::getTxData()
@@ -82,8 +80,8 @@ void Motor::handle(float arg)
             {
                 float s_ref = ppid_.calc(arg, angle_);
                 amperes = spid_.calc(s_ref, speedRpm_);
+                break;
             }
-        break;
 
         case 2:
             {
@@ -92,7 +90,7 @@ void Motor::handle(float arg)
                 break;
             }
     }
-    amperes +=  + (forward_k) * (float)sin((double)angle_ * 3.1415926f / 180.0f);
+    amperes += (forward_k) * (float)sin((double)angle_ * 3.1415926f / 180.0f);
     amperes_ = amperes;
     setTxCurrent(amperes);
 }

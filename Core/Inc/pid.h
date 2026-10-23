@@ -21,6 +21,8 @@ private:
 
     float err_sum_ = 0;
     float last_err_ = 0;
+    float dout_ = 0;
+    float pout_ = 0;
 };
 
 #endif //LESSON_CAN_PID_H

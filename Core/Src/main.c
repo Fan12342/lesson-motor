@@ -49,7 +49,7 @@
 
 /* USER CODE BEGIN PV */
 bool stop_flag = false;
-uint8_t target_angle = 90;
+uint8_t target_angle = 85;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -94,8 +94,10 @@ int main(void)
   MX_GPIO_Init();
   MX_CAN1_Init();
   MX_TIM6_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
 
+  HAL_TIM_Base_Start_IT(&htim1);   // 启动 TIM1 并开启更新中断
   if (HAL_CAN_ConfigFilter(&hcan1, &can_filter_config) != HAL_OK
     || HAL_CAN_Start(&hcan1) != HAL_OK
     || HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK
@@ -116,10 +118,10 @@ int main(void)
     {
       lastTick = currentTick;
 
-      if (target_angle == 90)
-        target_angle = 100;
+      if (target_angle == 85)
+        target_angle = 95;
       else
-        target_angle = 90;
+        target_angle = 85;
 
     }
     //RM_LOG(target_angle);

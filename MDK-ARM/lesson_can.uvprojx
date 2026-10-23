@@ -396,6 +396,31 @@
           <GroupName>Application/User/Core</GroupName>
           <Files>
             <File>
+              <FileName>can_user.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\can_user.c</FilePath>
+            </File>
+            <File>
+              <FileName>callback.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\callback.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>motor.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\motor.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>pid.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\pid.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>rm_log.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\rm_log.c</FilePath>
+            </File>
+            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/main.c</FilePath>
@@ -577,31 +602,6 @@
               <FileName>stm32f4xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32f4xx_hal_msp.c</FilePath>
-            </File>
-            <File>
-              <FileName>can_user.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\can_user.c</FilePath>
-            </File>
-            <File>
-              <FileName>callback.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Core\Src\callback.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>motor.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Core\Src\motor.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>pid.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Core\Src\pid.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>rm_log.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\rm_log.c</FilePath>
             </File>
           </Files>
         </Group>
